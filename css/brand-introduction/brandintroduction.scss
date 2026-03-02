@@ -1,0 +1,1159 @@
+@use '../base/reset';
+@use '../base/library';
+@use '../base/variable' as v;
+@use '../base/mixin' as m;
+@use '../header_footer/header';
+@use '../header_footer/footer';
+@use '../base/responsive' as r;
+
+// 서브페이지 타이틀
+.main-title {
+    font-family: v.$ff-kr;
+
+    .header-title {
+        @include m.subpage-title;
+
+        @include r.mobile-lg {
+            font-size: 48px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 32px;
+        }
+
+        .header-sub-title {
+            @include m.flex-center;
+            font-weight: 500;
+            font-size: 18px;
+            margin-bottom: 18px;
+            gap: 5px;
+
+            img {
+                padding-bottom: 5px;
+            }
+        }
+    }
+}
+
+// 메인 콘텐츠
+// 섹션 1
+.brandIntro {
+    height: 150vh;
+    position: relative;
+
+    /* JS 제어 변수 */
+    --panelOffset: 80px;
+    --panelOpacity: 0;
+
+    &__pin {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    &__media {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // display: block;
+        }
+    }
+
+    /*  이미지와 동일 영역 덮는 오버레이 */
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+
+        background: rgba(0, 0, 0, 0.8);
+
+        transform: translateY(var(--panelOffset, 80px));
+        opacity: var(--panelOpacity, 0);
+
+        transition: transform .3s linear, opacity .3s linear;
+        will-change: transform, opacity;
+
+        display: flex;
+        align-items: center;
+
+        font-family: v.$ff-kr;
+
+        &Inner {
+            @include m.inner;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            // padding: 40px 24px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__title {
+        font-size: 40px;
+        font-weight: v.$fw-title-sm;
+        margin: 0 0 55px 0;
+
+        @include r.mobile-lg {
+            font-size: 32px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 24px;
+        }
+    }
+
+    &__desc {
+        font-size: v.$fs-sm;
+        font-weight: 300;
+        line-height: 2;
+        margin: 0 0 90px 0;
+        max-width: 720px;
+
+        @include r.mobile-sm {
+            font-size: 14px;
+        }
+    }
+
+    &__stats {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        display: flex;
+        justify-content: space-between;
+
+        @include r.mobile-sm {
+            flex-direction: column;
+        }
+    }
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+
+    @include r.mobile-sm {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 24px;
+    }
+
+    &:nth-child(2) {
+        position: relative;
+
+        @include r.mobile-sm {
+
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 100px;
+            background: #fff;
+            left: -70%;
+            transform: translateX(50%);
+
+            @include r.tablet {
+                left: -35%;
+            }
+
+            @include r.mobile-lg {
+                left: -40%;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 100px;
+            background: #fff;
+            right: -70%;
+            transform: translateX(50%);
+
+            @include r.tablet {
+                right: -35%;
+            }
+
+            @include r.mobile-lg {
+                right: -40%;
+            }
+        }
+    }
+
+    &__num {
+        font-size: 72px;
+        font-weight: v.$fw-title-sm;
+        color: v.$c-brand-light;
+
+        @include r.mobile-lg {
+            font-size: 48px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 36px;
+        }
+
+        .stat__numCount {
+            display: inline-block;
+        }
+
+        .stat__numText {
+            display: none; // 기본: 합쳐지기 전엔 숨김
+        }
+    }
+
+    &__label {
+        opacity: 0.9;
+        font-size: 30px;
+        font-weight: 400;
+
+        @include r.mobile-lg {
+            font-size: 24px;
+        }
+
+        @include r.mobile-sm {
+            font-size: v.$fs-re;
+        }
+    }
+
+}
+
+.brandIntro.is-merged {
+    .stat__num {
+        .stat__numCount {
+            display: none;
+        }
+
+        .stat__numText {
+            display: inline-block;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .brandIntro {
+        height: 220vh;
+
+        &__overlayInner {
+            padding: 28px 18px;
+        }
+
+        &__stats {
+            gap: 24px;
+        }
+    }
+}
+
+// 섹션 2
+.timeline {
+    position: relative;
+    background: #000;
+
+    /* JS가 넣는 진행률(0~1) */
+    --p: 0;
+
+    &__pin {
+        position: relative;
+        height: auto;
+        overflow: visible;
+    }
+
+    &__inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 64px 24px;
+        position: relative;
+    }
+
+    &__head {
+        text-align: center;
+        margin: 100px 0 60px;
+
+        @include r.mobile-lg {
+            margin-bottom: 60px;
+        }
+
+        .timeline__kicker {
+            color: v.$c-text-white;
+            margin-bottom: 50px;
+            font-size: 50px;
+            font-family: v.$ff-kr;
+            font-weight: v.$fw-title-sm;
+
+            @include r.mobile-lg {
+                font-size: 32px;
+                margin-bottom: 30px;
+            }
+
+            @include r.mobile-sm {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+        }
+
+        .timeline__title {
+            color: v.$c-brand-primary;
+            font-size: 50px;
+            font-family: v.$ff-kr;
+            font-weight: v.$fw-title-sm;
+
+            @include r.mobile-lg {
+                font-size: 32px;
+            }
+
+            @include r.mobile-sm {
+                font-size: 24px;
+            }
+        }
+    }
+
+    /* ===== 중앙 트랙: 섹션 전체 높이에 맞춰 자동 ===== */
+    &__track {
+        position: absolute;
+        left: 50%;
+        top: 10%; // 대략 헤더 영역 이후 (필요하면 숫자만 조정)
+        bottom: 120px; // end 위 여백 (필요하면 조정)
+        transform: translateX(-50%);
+        width: 2px;
+        pointer-events: none;
+    }
+
+    /* 전체 희미한 선(선택) - 원하면 제거 가능 */
+    &__lineBase {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.12);
+
+        @include r.mobile-lg {
+            display: none;
+        }
+    }
+
+    /* ✅ dot이 지나간 만큼만 보이는 선 */
+    &__lineFill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform-origin: top;
+        transform: scaleY(var(--p));
+        background: rgba(255, 255, 255, 0.75);
+
+        @include r.mobile-lg {
+            display: none;
+        }
+    }
+
+    &__dot {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0);
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: #fff;
+        box-shadow: 0 0 0 6px v.$c-brand-primary;
+
+        @include r.mobile-lg {
+            display: none;
+        }
+    }
+
+
+    &__steps {
+        display: grid;
+        grid-template-columns: 1fr 120px 1fr;
+        /* 가운데 트랙 공간 */
+        column-gap: 20px;
+
+
+        row-gap: 72px;
+
+        position: relative;
+        z-index: 2;
+
+        @include r.tablet {
+            grid-template-columns: 0;
+            column-gap: 0;
+        }
+
+        @include r.mobile-lg {
+            row-gap: 60px;
+        }
+    }
+
+    .tStep:nth-child(odd) {
+        grid-column: 1;
+        justify-self: start;
+
+        @include r.mobile-sm {
+            grid-column: 2;
+        }
+    }
+
+    .tStep:nth-child(even) {
+        grid-column: 3;
+        justify-self: end;
+
+        @include r.mobile-sm {
+            grid-column: 3;
+            justify-self: center;
+
+        }
+    }
+
+    &__end {
+        width: 300px;
+        margin: 56px auto 0;
+        position: relative;
+        z-index: 2;
+        border: #000;
+
+        img {
+            width: 100%;
+        }
+
+        @include r.mobile-lg {
+            display: none;
+        }
+    }
+}
+
+// 줄바꿈
+.pc {
+    display: block;
+
+    @include r.mobile-lg {
+        display: none;
+    }
+}
+
+.mo {
+    display: block;
+
+    @include r.mobile-sm {
+        display: none;
+    }
+}
+
+.mo-lg {
+    display: none;
+
+    @include r.mobile-lg {
+        display: block;
+    }
+}
+
+.mo-sm {
+    display: none;
+
+    @include r.mobile-sm {
+        display: block;
+    }
+}
+
+/* Step Card */
+.tStep {
+    // width: min(420px, 42vw);
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include r.tablet {
+        // width: 450px;
+    }
+
+    &__circle {
+        width: 350px;
+        height: 350px;
+        border-radius: 999px;
+        overflow: hidden;
+        margin: 0 0 24px;
+        box-shadow: 0 0 15px 1px v.$c-text-white;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @include r.tablet {
+            width: 300px;
+            height: 300px;
+        }
+
+        @include r.mobile-lg {
+            width: 350px;
+            height: 350px;
+        }
+
+        @include r.mobile-sm {
+            width: 185px;
+            height: 185px;
+        }
+    }
+
+    &__meta {
+        font-size: 20px;
+        margin-bottom: 15px;
+        font-family: v.$ff-kr;
+        font-weight: 500;
+
+        @include r.tablet {
+            font-size: 18px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 16px;
+        }
+    }
+
+    &__title {
+        margin: 0 0 15px;
+        font-family: v.$ff-kr;
+        font-size: 32px;
+        font-weight: v.$fw-title-sm;
+
+        @include r.tablet {
+            font-size: 28px;
+        }
+
+        @include r.mobile-lg {
+            font-size: 24px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 18px;
+        }
+    }
+
+    &__desc {
+        margin: 0;
+        font-family: v.$ff-kr;
+        font-size: 18px;
+        font-weight: 400;
+
+        @include r.tablet {
+            font-size: 16px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 13px;
+        }
+    }
+
+    &:nth-child(1) {
+        margin-top: 350px;
+
+        @include r.mobile-lg {
+            margin-top: 0;
+        }
+    }
+
+    &:nth-child(2) {
+        margin-top: 1100px;
+
+        @include r.mobile-lg {
+            margin-top: 0;
+        }
+    }
+
+    &:nth-child(3) {
+        margin-top: 100px;
+
+        @include r.mobile-lg {
+            margin-top: 0;
+        }
+    }
+
+    &:nth-child(4) {
+        margin-top: 700px;
+        margin-bottom: 200px;
+
+        @include r.mobile-lg {
+            margin-top: 0;
+        }
+    }
+
+}
+
+// 섹션 3
+.pin-section {
+    /* 섹션 스크롤 길이 (JS에서 계산된 값으로 덮어씀) */
+    height: 300vh; // fallback
+    position: relative;
+    overflow: clip;
+    @include r.tablet{
+        height: auto;
+    }
+    &__sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden; // 카드가 지나갈 때 밖으로 나가면 숨김
+        @include r.tablet{
+            position: relative;
+            height: auto;
+        }
+    }
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        transform: scale(1.02); // 살짝 확대하면 가장자리 안정적
+        img{
+            @include r.tablet{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(36, 36, 36, 0.3); // 가독성용
+    }
+
+   
+    &__inner {
+        @include m.inner;
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: v.$ff-kr;
+        @include r.tablet{
+            flex-direction: column;
+            gap: 80px;
+            padding: 80px 0;
+        }
+    }
+
+    &__left {
+        flex: 1;
+        z-index: 2;
+        width: 100%;
+    }
+
+    &__title {
+        margin: 0 0 24px;
+        font-size: 40px;
+        font-weight: v.$fw-title;
+        line-height: 1.15;
+        color: #fff;
+        @include r.mobile-lg{
+            font-size: 32px;
+        }
+        @include r.mobile-sm{
+            font-size: 24px;
+        }
+    }
+
+    &__desc {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.8;
+        color: v.$c-text-white;
+        font-weight: v.$fw-re;
+        .bold {
+            font-size: 24px;
+            font-weight: v.$fw-title;
+            @include r.mobile-lg{
+                font-size: 20px;
+            }
+            @include r.mobile-sm{
+                font-size: 18px;
+            }
+        }
+        @include r.mobile-lg{
+            font-size: v.$fs-re;
+        }
+        @include r.mobile-sm{
+            font-size: 16px;
+        }
+    }
+
+    &__right {
+        z-index: 2;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* 우측 폭 */
+        flex: 0 0 45%;
+
+        /* flex overflow 이슈 방지 */
+        min-width: 0;
+        @include r.tablet{
+            width: 100%;
+        }
+    }
+
+    /* 카드가 “지나가는 통로” */
+    &__track {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        @include r.tablet{
+            height: auto;
+            overflow: visible;
+        }
+    }
+
+    /* JS가 translateY를 적용할 래퍼 */
+    &__cards {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 60%;
+        will-change: transform;
+        @include r.tablet{
+            position: relative;
+            top: 0;
+            transform: none;
+            width: 100%;
+        }
+    }
+}
+
+/* 카드 스타일 */
+.card {
+    border-radius: 5px;
+    padding: 28px 26px;
+    margin: 0 0 26px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    box-shadow: 7px 6px 14px 0 rgba(0, 0, 0, 0.25),
+    inset 2px 2px 6px 0 rgba(255, 255, 255, 0.25);
+    font-family: v.$ff-kr;
+    width: 350px;
+    @include r.tablet{
+        display: block;
+    }
+    @include r.mobile-sm{
+        width: 315px;
+    }
+    &__kicker {
+        margin: 0 0 10px;
+        font-size: 32px;
+        font-weight: 500;
+        margin-bottom: 45px;
+        @include r.mobile-lg{
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__big {
+        margin: 0;
+        font-size: 54px;
+        font-weight: v.$fw-title-sm;
+        line-height: 1.05;
+
+        span {
+            color: v.$c-brand-light;
+        }
+        @include r.mobile-lg{
+            font-size: 36px;
+        }
+    }
+
+    &__sub {
+        margin: 8px 0 45px;
+        font-size: 30px;
+        font-weight: 500;
+        @include r.mobile-lg{
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__body {
+        margin: 0;
+        font-size: 16px;
+        font-weight: v.$fw-re;
+        line-height: 1.7;
+    }
+}
+
+/* 엇갈림(수직 offset + 약간의 좌우) */
+.card--a {
+    transform: translateY(0px) translateX(0);
+    @include r.tablet{
+        transform: none;
+    }
+}
+
+.card--b {
+    transform: translateY(60px) translateX(55%);
+    @include r.tablet{
+        display: flex;
+        flex-direction: column;
+        justify-self: right;
+        transform: none;
+    }
+}
+
+.card--c {
+    transform: translateY(120px) translateX(0);
+    @include r.tablet{
+        transform: none;
+    }
+}
+
+
+// 섹션4
+.whoPin {
+    /*  줄별 채움 진행률 (JS가 넣음 0~1) */
+    --fill1: 0;
+    --fill2: 0;
+  
+    font-family: v.$ff-kr;
+    height: 320vh;
+    position: relative;
+    background: #fffdfd;
+    @include r.mobile-lg{
+        margin-bottom: 160px;
+    }
+    @include r.mobile-sm{
+        margin-bottom: 0;
+    }
+    &__sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+  
+    &__inner {
+      position: relative;
+      height: 100%;
+    }
+  
+    &__images {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+  
+    &__center {
+      @include m.inner;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 5;
+      padding: 0 16px;
+      @include r.mobile-lg{
+        justify-content: none;
+        padding-top: 36px;
+      }
+    }
+  
+    &__eyebrow {
+      margin: 0 0 18px;
+      font-family: v.$ff-en;
+      font-size: 24px;
+      font-weight: 500;
+      color: v.$c-brand-primary;
+      @include r.mobile-lg{
+        margin-top: 360px;
+        margin-bottom: 24px;
+        font-size: 28px;
+      }
+      @include r.mobile-sm{
+        margin-top: 0px;
+        font-size: 22px;
+      }
+    }
+  
+    /*  타이틀 디자인 유지 */
+    &__title {
+      position: relative;
+      margin-top: 60px;
+      margin-bottom: 85px;
+      line-height: 1.15;
+      font-size: 64px;
+      font-weight: v.$fw-title;
+      letter-spacing: -0.02em;
+      @include r.mobile-lg{
+        font-size: 48px;
+        margin-bottom: 24px;
+        margin-top: 0;
+      }
+      @include r.mobile-sm{
+        font-size: 28px;
+
+      }
+    }
+  
+    /*  줄 컨테이너 */
+    &__line {
+      position: relative;
+      display: block;
+    }
+  
+    /* 기본 그레이 */
+    &__base {
+      display: block;
+      color: #d6d6d6;
+    }
+  
+    /* 채워지는 블랙 레이어 */
+    &__fill {
+      position: absolute;
+      inset: 0;
+      display: block;
+      color: #111;
+      pointer-events: none;
+  
+      /* 왼 → 오른쪽 채움 */
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        #000 0%,
+        #000 var(--lineFill),
+        transparent calc(var(--lineFill) + 10%),
+        transparent 100%
+      );
+      -webkit-mask-size: 100% 100%;
+      -webkit-mask-repeat: no-repeat;
+  
+      mask-image: linear-gradient(
+        90deg,
+        #000 0%,
+        #000 var(--lineFill),
+        transparent calc(var(--lineFill)),
+        transparent 100%
+      );
+      mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+    }
+  
+    /*  각 줄이 참조하는 fill */
+    &__fill--1 { --lineFill: calc(var(--fill1) * 100%); }
+    &__fill--2 { --lineFill: calc(var(--fill2) * 100%); }
+  
+    &__desc {
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 400;
+      color: rgb(90, 90, 90);
+      @include r.mobile-lg{
+        font-size: 20px;
+      }
+      @include r.mobile-sm{
+        font-size: v.$fs-sm;
+      }
+    }
+  }
+  
+  /* ===== 좌/우 덱 컨테이너 ===== */
+  .imgDeck {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(560px, 38vw);
+    height: min(460px, 32vw);
+    perspective: 900px;
+  
+    &--left { 
+        left: clamp(12px, 4vw, 70px);
+        @include r.mobile-lg{
+            left: 10px;
+        } 
+    }
+    &--right { 
+        right: clamp(12px, 4vw, 70px);
+        @include r.mobile-lg{
+            right: 10px;
+        } 
+    }
+    @include r.mobile-lg{
+        position: absolute;
+        top: 260px;
+        transform: translateY(-50%);
+        width: min(320px, 42vw);
+        height: min(240px, 32vw);
+        margin: 0;
+    }
+    @include r.mobile-sm{
+        top: 180px;
+    }
+  }
+  
+  .imgCard {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+  
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    will-change: transform, opacity, filter;
+  
+    transform-style: preserve-3d;
+    transform-origin: center center;
+  
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  
+  
+  
+  
+  
+
+// 로케이션
+.location-btns {
+    display: flex;
+    width: 100%;
+    height: 180px;
+    justify-content: space-between;
+    gap: 2px;
+
+    @include r.mobile-lg {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        height: 360px;
+    }
+
+    .location-btn {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: rgba(0, 0, 0, 0.6);
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.8);
+
+            .location-img-box {
+                img {
+                    transform: scale(1.2);
+                }
+            }
+
+            .location-text {
+                &-left {
+                    img {
+                        transform: translate(-50%, 30%);
+                    }
+                }
+
+                &-right {
+                    img {
+                        transform: translate(50%, 30%);
+                    }
+                }
+            }
+        }
+
+        .location-img-box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                transition: .3s;
+            }
+        }
+
+        .location-text {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: v.$ff-en;
+            font-size: 36px;
+            color: v.$c-text-white;
+
+            @include r.mobile-lg {
+                font-size: 48px;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transform: translateY(30%);
+                transition: .3s;
+            }
+
+            &-left {
+                top: 50%;
+                right: 10%;
+
+                @include r.mobile-lg {
+                    top: 50%;
+                    right: 50%;
+                    transform: translate(50%, -50%);
+                }
+            }
+
+            &-right {
+                top: 50%;
+                left: 10%;
+
+                @include r.mobile-lg {
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                }
+            }
+
+            .location-title {}
+        }
+    }
+}

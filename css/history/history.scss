@@ -1,0 +1,404 @@
+@use '../base/reset';
+@use '../base/library';
+@use '../base/variable' as v;
+@use '../base/mixin' as m;
+@use '../header_footer/header';
+@use '../header_footer/footer';
+@use '../base/responsive' as r;
+
+// 서브페이지 타이틀
+.main-title {
+    font-family: v.$ff-kr;
+
+    .header-title {
+        @include m.subpage-title;
+
+        @include r.mobile-lg {
+            font-size: 48px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 32px;
+        }
+
+        .header-sub-title {
+            @include m.flex-center;
+            font-weight: 500;
+            font-size: 18px;
+            margin-bottom: 18px;
+            gap: 5px;
+
+            img {
+                padding-bottom: 5px;
+            }
+        }
+    }
+}
+
+//  섹션 1
+.history {
+    position: relative;
+    margin-bottom: 240px;
+    font-family: v.$ff-kr;
+
+    @include r.mobile-lg {
+        margin-bottom: 160px;
+    }
+
+    &__inner {
+        @include m.inner;
+    }
+
+    /* ───────── 타임라인(중앙 선/빨간선/점) ───────── */
+    &__rail {
+        position: absolute;
+        top: 100px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        pointer-events: none;
+
+        @include r.mobile-sm {
+            left: 25px;
+        }
+    }
+
+    &__rail-gray {
+        position: absolute;
+        inset: 0;
+        background: #d9d9d9;
+        width: 4px;
+
+        @include r.mobile-lg {
+            width: 3px;
+        }
+    }
+
+    /* JS가 --progress(0~1)로 채움 */
+    &__rail-red {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(var(--progress, 0) * 100%);
+        background: v.$c-brand-primary;
+        width: 4px;
+
+        @include r.mobile-lg {
+            width: 3px;
+        }
+    }
+
+    /* JS가 --dotY(px)로 이동 */
+    &__dot {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, calc(var(--dotY, 0px)));
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: v.$c-text-white;
+        box-shadow: 0 0 0 5px v.$c-brand-primary;
+
+        opacity: 0;
+        transition: opacity 320ms ease-out;
+        /*  갑자기 생김 방지 */
+        will-change: transform, opacity;
+
+        @include r.mobile-sm {
+            width: 10px;
+            height: 10px;
+            box-shadow: 0 0 0 3px v.$c-brand-primary;
+        }
+    }
+
+    &.is-active {
+        .history__dot {
+            opacity: 1;
+        }
+    }
+
+    /* ───────── 리스트 ───────── */
+    &__list {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 400px;
+        align-items: center;
+
+        @include r.mobile-sm {
+            gap: 100px;
+            padding: 0 15px;
+        }
+    }
+
+    /* ───────── 아이템 ───────── */
+    &-item {
+        display: flex;
+        width: 100%;
+        gap: 200px;
+        align-items: center;
+
+        /*  dotY 기준 등장 */
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(24px);
+        transition: opacity 600ms ease-out, transform 600ms ease-out;
+
+        @include r.tablet {
+            gap: 150px;
+        }
+
+        flex-direction: row-reverse;
+
+        @include r.mobile-sm {
+            flex-direction: column;
+            justify-content: left;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        &:first-child {
+            margin-top: 100px;
+        }
+
+        &.aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .history-col--text {
+            text-align: left;
+            flex: 0 0 calc(50% - 100px);
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            @include r.mobile-sm {
+                align-items: none;
+                flex: 1;
+            }
+        }
+
+        .history-col--media {
+            flex: 0 0 calc(50% - 100px);
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+
+            @include r.mobile-sm {
+                align-items: start;
+                flex: 1;
+            }
+        }
+
+        &:nth-child(even) {
+            flex-direction: row;
+
+            @include r.mobile-sm {
+                flex-direction: column;
+                text-align: left;
+                align-items: start;
+            }
+
+            .history-col--text {
+                text-align: right;
+                align-items: end;
+
+                @include r.mobile-sm {
+                    align-items: none;
+                    text-align: left;
+                }
+            }
+
+            .history-col--media {
+                align-items: start;
+
+                @include r.mobile-sm {
+                    align-items: flex-start;
+                }
+            }
+        }
+    }
+
+    &-year {
+        margin: 0 0 24px 0;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 1.2;
+
+        @include r.tablet {
+            font-size: 32px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &-text {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 24px;
+        font-weight: 500;
+
+        .history-line {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @include r.tablet {
+            font-size: 18px;
+        }
+
+        @include r.mobile-sm {
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &-media {
+        @include r.mobile-sm {
+            width: 358px;
+            height: 215px;
+            overflow: hidden;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+
+            @include r.mobile-sm {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+}
+
+
+
+
+
+// 로케이션
+.location-btns {
+    display: flex;
+    width: 100%;
+    height: 180px;
+    justify-content: space-between;
+    gap: 2px;
+
+    @include r.mobile-lg {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        height: 360px;
+    }
+
+    .location-btn {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: rgba(0, 0, 0, 0.6);
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.8);
+
+            .location-img-box {
+                img {
+                    transform: scale(1.2);
+                }
+            }
+
+            .location-text {
+                &-left {
+                    img {
+                        transform: translate(-50%, 30%);
+                    }
+                }
+
+                &-right {
+                    img {
+                        transform: translate(50%, 30%);
+                    }
+                }
+            }
+        }
+
+        .location-img-box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                transition: .3s;
+            }
+        }
+
+        .location-text {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: v.$ff-en;
+            font-size: 36px;
+            color: v.$c-text-white;
+
+            @include r.mobile-lg {
+                font-size: 48px;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transform: translateY(30%);
+                transition: .3s;
+            }
+
+            &-left {
+                top: 50%;
+                right: 10%;
+
+                @include r.mobile-lg {
+                    top: 50%;
+                    right: 50%;
+                    transform: translate(50%, -50%);
+                }
+            }
+
+            &-right {
+                top: 50%;
+                left: 10%;
+
+                @include r.mobile-lg {
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,388 @@
+
+@use '../base/variable' as v;
+@use '../base/mixin' as m;
+@use '../base/responsive' as r;
+
+
+.brands{
+  width: 100%; height: auto;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 160px;
+  .brands-inner{
+    @include m.inner;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .tab-img-wrap{
+      display: none;
+      width: 957px; height: 980px;
+      transform: translateX(8px);
+      .prod-img{
+        max-width: inherit; height: inherit;
+        object-fit: cover;
+      }
+
+      &.active{
+        display: inline-block;
+        animation: fadeInleft 0.5s ease forwards
+      }
+    }
+    .brand-intro{
+      .brand-text-box{
+        display: none;
+        opacity: 0;
+        text-align: right;
+        position: relative;
+        margin: 0 108px 108px 0;
+        color: v.$c-text-white;
+        &::before{
+          content: '';
+          width: 1700px; height: 490px;
+          position: absolute;
+          top: 50%; transform: translateY(-50%);
+          z-index: -1;
+        }
+        &:nth-child(1)::before{
+          background: linear-gradient(90deg, rgba(102, 15, 15, 0.89) 0%, v.$c-brand-primary 10%) ;
+        }
+        &:nth-child(2)::before{
+          background: linear-gradient(90deg, rgba(19, 53, 16, 0.89) 0%, v.$c-sprite 10%) ;
+        }
+        &:nth-child(3)::before{
+          background: linear-gradient(90deg, rgba(104, 34, 24, 0.89) 0%, v.$c-fanta 20%) ;
+        }
+        &:nth-child(4)::before{
+          background: linear-gradient(90deg, rgba(0, 0, 0, 0.89) 0%, v.$c-docpeper 10%) ;
+        }
+        &:nth-child(5)::before{
+          background: linear-gradient(90deg, rgba(23, 29, 107, 0.89) 0%, v.$c-powerade 10%) ;
+        }
+        &:nth-child(6){color: v.$c-text-black;}
+        &:nth-child(6)::before{
+          background: linear-gradient(90deg, rgba(27, 141, 12, 0.89) 0%, #94EA03 10%) ;
+        }
+        &::after{
+          content: 'Brand';
+          position: absolute;
+          top: -30%; left: -45%;
+          font-family: v.$ff-en;
+          font-size: 164px;
+          font-weight: bold;
+          z-index: -2;
+          animation: textFadeSlide 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        &:nth-child(1)::after{color: v.$c-brand-primary;}
+        &:nth-child(2)::after{color: v.$c-sprite;}
+        &:nth-child(3)::after{color: v.$c-fanta;}
+        &:nth-child(4)::after{color: v.$c-docpeper;}
+        &:nth-child(5)::after{color: v.$c-powerade;}
+        &:nth-child(6)::after{color: #94EA03;}
+        h5{
+          font-family: v.$ff-en;
+          font-size: 24px;
+          font-weight: 400;
+          animation: fadeInRight 0.5s ease 0.2s forwards; opacity: 0;
+        }
+        .brand-name{
+          font-family: v.$ff-kr;
+          font-size: 96px;
+          font-weight: 700;
+          line-height: 115px;
+          margin: 4px 0 24px 0;
+          animation: fadeInRight 0.5s ease 0.3s forwards; opacity: 0;
+        }
+        p{
+          font-family: v.$ff-kr;
+          font-size: 20px;
+          font-weight: 400;
+          margin-bottom: 66px;
+          animation: fadeInRight 0.5s ease 0.4s forwards; opacity: 0;
+        }
+        .page-link{
+          display: inline-flex;
+	        align-items: center;
+	        justify-content: center;
+	        padding: 12px 24px;
+	        border: 1px solid v.$c-text-white;
+	        border-radius: 60px;
+          font-family: v.$ff-kr;
+          font-size: 18px;
+          font-weight: 400;
+          color: v.$c-text-white;
+          animation: fadeInRight 0.5s ease 0.5s forwards; opacity: 0;
+          transition: 0.3s;
+          &:hover{
+            background-color: v.$c-text-white;
+            color: v.$c-text-black;
+          }
+        }
+        &:nth-child(6){
+          .page-link{
+            border: 1px solid v.$c-text-black;
+            color: v.$c-text-black;
+          }
+        }
+        &.active{
+          display: block;
+          opacity: 1;
+          &::before {
+          animation: bgFadeSlide 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+         }
+        }
+        &:nth-child(1).active::before{right: -160%;}
+        &:nth-child(2).active::before{right: -140%;}
+        &:nth-child(3).active::before{right: -160%;}
+        &:nth-child(4).active::before{right: -170%;}
+        &:nth-child(5).active::before{right: -130%;}
+        &:nth-child(6).active::before{right: -150%;}
+      }
+    }
+   .tab-box{
+    text-align: center;
+    .brand-tab-btns{
+      @include m.flex-center;
+      gap: 32px;
+      margin-bottom: 24px;
+      .tab-btn{
+        width: 68px; height: 64px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: relative;
+        transition: 0.3s;
+        &:nth-child(1){
+          background-image: url(../image/coacola-logo-red-small.svg);
+        }
+        &:nth-child(2){
+          background-image: url(../image/Sprite_Logo.svg);
+        }
+        &:nth-child(3){
+          background-image: url(../image/Fanta_logo.svg);
+        }
+        &:nth-child(4){
+          background-image: url(../image/dr-pepper-seeklogo.svg);
+        }
+        &:nth-child(5){
+          background-image: url(../image/Powerade_logo.svg);
+        }
+        &:nth-child(6){
+          background-image: url(../image/Toreta.png);
+        }
+        &::before{
+          content: '';
+          opacity: 0;
+          width: 8px; height: 8px;
+          border-radius: 50%;
+          background-color: v.$c-brand-primary;
+          position: absolute;
+          top: 8px; right: 2px;
+        }
+        &:hover{
+          transform: scale(1.5);
+        }
+        &.active{
+          transform: scale(1.5);
+        }
+        &.active::before{
+          opacity: 1;
+        }
+      }
+    }
+    .brand-page{
+      @include m.slide-bg-btn;
+    }
+   } 
+ }
+ @include r.tablet{
+  .brands-inner{
+    flex-direction: column;
+    gap: 84px;
+    .tab-img-wrap{
+      width: 1024px; height: 960px;
+      .prod-img{width: inherit; height: inherit; object-fit: contain;}
+    }
+    .brand-intro{
+      .brand-text-box{
+       text-align: center;
+       margin: 0 auto 48px auto;
+       &::before{
+        width: 976px; height: 280px;
+        border-radius: 24px;
+        top: 50%;
+       }
+       &:nth-child(1)::before{background: v.$c-brand-primary;}
+       &:nth-child(2)::before{background: v.$c-sprite;}
+       &:nth-child(3)::before{background: v.$c-fanta;}
+       &:nth-child(4)::before{background: v.$c-docpeper;}
+       &:nth-child(5)::before{background: v.$c-powerade;}
+       &:nth-child(6)::before{background: #94EA03;}
+
+       &:nth-child(1).active::before{left: -62%;}
+       &:nth-child(2).active::before{left: -62%;}
+       &:nth-child(3).active::before{left: -62%;}
+       &:nth-child(4).active::before{left: -62%;}
+       &:nth-child(5).active::before{left: -62%;}
+       &:nth-child(6).active::before{left: -62%;}
+
+       &::after{top: -18%; left: 25%; font-size: 72px;}
+
+       h5{font-size: 16px;}
+       .brand-name{font-size: 72px; line-height: 84px; margin: 2px 0;}
+       p{font-size: 16px; margin-bottom: 8px;}
+       .page-link{
+        font-size: 16px;
+        padding: 12px 16px;
+       } 
+      }
+    }
+    .tab-box{
+      .brand-tab-btns{
+        gap: 24px;
+        .tab-btn{
+          width: 52px; height: 52px;
+          &::before{width: 6px; height: 6px;}
+        }
+      }
+    }
+  }
+ }
+ //반응형 768
+ @include r.mobile-lg{
+  .brands-inner{
+    flex-direction: column;
+    gap: 84px;
+    .tab-img-wrap{
+      width: 720px; height: 820px;
+      .prod-img{width: inherit; height: inherit; object-fit: contain;}
+    }
+    .brand-intro{
+      .brand-text-box{
+       text-align: center;
+       margin: 0 auto 48px auto;
+       &::before{
+        width: 768px; height: 280px;
+        top: 50%;
+       }
+       &:nth-child(1)::before{background: v.$c-brand-primary;}
+       &:nth-child(2)::before{background: v.$c-sprite;}
+       &:nth-child(3)::before{background: v.$c-fanta;}
+       &:nth-child(4)::before{background: v.$c-docpeper;}
+       &:nth-child(5)::before{background: v.$c-powerade;}
+       &:nth-child(6)::before{background: #94EA03;}
+
+       &:nth-child(1).active::before{left: -35%;}
+       &:nth-child(2).active::before{left: -35%;}
+       &:nth-child(3).active::before{left: -35%;}
+       &:nth-child(4).active::before{left: -35%;}
+       &:nth-child(5).active::before{left: -35%;}
+       &:nth-child(6).active::before{left: -35%;}
+
+       &::after{top: -24%; left: 25%; font-size: 72px;}
+
+       h5{font-size: 16px;}
+       .brand-name{font-size: 64px; line-height: 72px; margin: 2px 0;}
+       p{font-size: 16px; margin-bottom: 8px;}
+       .page-link{
+        font-size: 16px;
+        padding: 12px 16px;
+       } 
+      }
+    }
+    .tab-box{
+      .brand-tab-btns{
+        gap: 24px;
+        .tab-btn{
+          width: 52px; height: 52px;
+          &::before{width: 6px; height: 6px;}
+        }
+      }
+    }
+  }
+ }
+ 
+ //반응형 440
+ @include r.mobile-sm{
+  .brands-inner{
+    flex-direction: column;
+    gap: 48px;
+    .tab-img-wrap{
+      width: 392px; height: 560px;
+      .prod-img{width: inherit; height: inherit; object-fit: contain;}
+    }
+    .brand-intro{
+      .brand-text-box{
+       text-align: center;
+       margin: 0 auto 48px auto;
+       &::before{
+        width: 440px; height: 280px;
+        top: 50%;
+       }
+       &:nth-child(1)::before{background-color: v.$c-brand-primary;}
+       &:nth-child(2)::before{background-color: v.$c-sprite;}
+       &:nth-child(3)::before{background-color: v.$c-fanta;}
+       &:nth-child(4)::before{background-color: v.$c-docpeper;}
+       &:nth-child(5)::before{background-color: v.$c-powerade;}
+       &:nth-child(6)::before{background-color: #94EA03;}
+
+       &:nth-child(1).active::before{left: -10%;}
+       &:nth-child(2).active::before{left: -10%;}
+       &:nth-child(3).active::before{left: -10%;}
+       &:nth-child(4).active::before{left: -10%;}
+       &:nth-child(5).active::before{left: -10%;}
+       &:nth-child(6).active::before{left: -10%;}
+
+       &::after{top: -22%; left: 28%; font-size: 56px;}
+
+       h5{font-size: 16px;}
+       .brand-name{font-size: 48px; line-height: 72px; margin: 2px 0;}
+       p{font-size: 16px; margin-bottom: 8px;}
+       .page-link{
+        font-size: 16px;
+        padding: 8px 12px;
+       } 
+      }
+    }
+    .tab-box{
+      .brand-tab-btns{
+        gap: 12px;
+        .tab-btn{
+          width: 48px; height: 48px;
+          &::before{width: 4px; height: 4px;}
+        }
+      }
+    }
+  }
+ }
+}
+
+@keyframes fadeInleft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(-20px); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes bgFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+@keyframes textFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

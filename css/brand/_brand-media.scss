@@ -1,0 +1,109 @@
+@use '../base/mixin' as m;
+@use '../base/responsive' as r;
+@use '../base/variable' as v;
+
+.media-list img {
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+  
+  .image-wrap {
+    padding: 160px 0 80px;
+    background-image: url(../image/brands/media.png);
+    background-size: cover;
+    background-position: center;
+
+    .inner {
+      position: relative;
+      @include m.inner;
+
+      &::before {
+        content: '미디어';
+        position: absolute;
+        top: -20%;
+        color: v.$c-text-white;
+        font-size: v.$section-title;
+        font-weight: v.$fw-title-sm;
+        -webkit-text-stroke: 2px black;
+        @include r.mobile-lg {
+          top: -15%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .media-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        grid-auto-rows: auto;
+        @include r.mobile-lg {
+          grid-template-columns: 1fr;
+        }
+
+        a {
+          position: relative;
+          display: block;
+          overflow: hidden;
+          border-radius: 16px;
+          aspect-ratio: 16 / 9;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.3s ease, transform 0.3s ease;
+          }
+          &:hover img {
+            filter: brightness(0.6);
+            transform: scale(1.05);
+          }
+          &::before {
+            content: attr(data-title);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 15px 14px 30px;
+            background: #ffffffa4;
+            backdrop-filter: blur(5px);
+            color: #111;
+            font-size: 18px;
+            font-weight: 600;
+            opacity: 0;
+            transition:  0.3s;
+            z-index: -1;
+            cursor: pointer;
+          }
+          &:hover::before {
+            opacity: 1;
+            z-index: 20;
+          }
+        }
+      }
+    }
+  }
+
+  .media-more {
+    margin: 40px auto auto;
+
+    @include m.slide-bg-btn {
+      display: flex;
+      padding: 10px 26px;
+
+      @include r.mobile-lg {
+        padding: 8px 20px;
+      }
+
+      @include r.mobile-sm {
+        font-size: 12px;
+        padding: 6px 16px;
+      }
+    }
+  }
+}
