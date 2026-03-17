@@ -133,7 +133,35 @@ sustainabilty_water.html     → 자사 ESG(친환경) 경영 소개 디테일 �
 
 #### 메인페이지: 디자인(100%) / 구현(20%): header, footer, brands-sect
 
+<img width="90%" height="90%" alt="Image" src="https://github.com/user-attachments/assets/a845c8d1-cfc3-4523-aa14-3df940feb10b" />
+
+- **헤더** / **배너**
+
+<img width="90%" height="90%" alt="Image" src="https://github.com/user-attachments/assets/e338e873-db37-4c60-aea8-4e35eb8d13da" />
+
+- **브랜드 소식** : Swiper animation(Library)
+
+<img width="90%" height="90%" alt="Image" src="https://github.com/user-attachments/assets/b6777147-a144-4731-a219-960e0149b15c" />
+
+- **자회사(브랜드) 소개** : TabMenu(JavaScript)
+
+<img  width="90%" height="90%" src="https://github.com/user-attachments/assets/298b592b-7b85-49c0-bcda-7e3575d39c0c" />
+
+- **브랜드 소개** : Scroll animation(JavaScript)
+
+<img width="90%" height="90%" alt="Image" src="https://github.com/user-attachments/assets/f1ede9df-eb2c-44e9-b5f8-8fffe4ed89e4" />
+
+- **브랜드 연혁 소개** : Animation(JavaScript + Css)
+
+<img width="90%" height="90%" alt="Image" src="https://github.com/user-attachments/assets/707f5068-749b-485a-b37d-bda33c44720a" />
+
+- **자사 ESG(친환경) 경영 소개** : Hover animation(JavaScript + Css)
+
+---
+
+- **전체이미지**
+
+<p align="center">| :리뉴얼 후: | :리뉴얼 전: |</p>
 
 
-
-
+<p align="center">| <img width="45%" height="45%"  align="top" alt="Image" src="https://github.com/user-attachments/assets/a0c311dd-3ad4-4d00-bd02-ee57d857a3ec" /> &nbsp&nbsp|&nbsp&nbsp <img width="40%" height="40%" align="top" alt="Image" src="https://github.com/user-attachments/assets/2643ca62-ec41-46c5-ad4f-ffa038a7f481" /> |</p>
