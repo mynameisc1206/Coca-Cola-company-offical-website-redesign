@@ -70,6 +70,20 @@ sustainabilty_water.html     → 자사 ESG(친환경) 경영 소개 디테일 �
 └─────────────────────────────────┘
 ```
 
+## 반응형 브레이크포인트
+
+```scss
+// _variables.scss
+$breakpoint-mobile: 440px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+```
+
+- **모바일**: ~440px 
+- **태블릿**: 440px ~ 768px 
+- **데스크톱**: 1024px ~ 
+
+---
 
 ## 📄 페이지별 구현 의도 및 설명
 
