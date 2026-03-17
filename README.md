@@ -97,7 +97,7 @@ sustainabilty_water.html     → 자사 ESG(친환경) 경영 소개 디테일 �
 
 ---
 
-<img width="70%" height="70%" alt="Image" src="https://github.com/user-attachments/assets/d020c8fb-473b-48a1-a499-7c19950b282f" />
+<p align="center"><img width="40%" height="40%" align="top" alt="Image" src="https://github.com/user-attachments/assets/cd5a7c44-81e6-437e-9d56-4a6e609f39dd" /> &nbsp&nbsp | &nbsp&nbsp <img width="40%" height="40%" align="top" alt="Image" src="https://github.com/user-attachments/assets/d020c8fb-473b-48a1-a499-7c19950b282f" /></p>
 
 ### [지속가능성 페이지] (Sustainability_campagin/water)
 
@@ -163,5 +163,23 @@ sustainabilty_water.html     → 자사 ESG(친환경) 경영 소개 디테일 �
 
 <p align="center">| :리뉴얼 후: | :리뉴얼 전: |</p>
 
+<p align="center">| <img width="45%" height="45%" align="top" alt="Image" src="https://github.com/user-attachments/assets/a0c311dd-3ad4-4d00-bd02-ee57d857a3ec" /> &nbsp&nbsp | &nbsp&nbsp <img width="40%" height="40%" align="top" alt="Image" src="https://github.com/user-attachments/assets/2643ca62-ec41-46c5-ad4f-ffa038a7f481" /> |</p>
 
-<p align="center">| <img width="45%" height="45%"  align="top" alt="Image" src="https://github.com/user-attachments/assets/a0c311dd-3ad4-4d00-bd02-ee57d857a3ec" /> &nbsp&nbsp|&nbsp&nbsp <img width="40%" height="40%" align="top" alt="Image" src="https://github.com/user-attachments/assets/2643ca62-ec41-46c5-ad4f-ffa038a7f481" /> |</p>
+### 서브페이지(디자인 시스템(Design System) 구축)
+
+- **디자인 시스템(Design System) 구축 및 준수**: 
+
+프로젝트의 일관성을 유지하기 위해 상세 디자인 매뉴얼을 선제적으로 수립하였으며, 이를 기반으로 서브페이지의 UI 설계 및 프론트엔드 구현을 진행하여 시각적 완성도를 극대화했습니다.
+
+<p  align="center">
+       <img width="35%" height="35%" align="top" alt="Image" src="https://github.com/user-attachments/assets/3b828daa-0a7a-489f-9eb3-97d8efe53b54" /> 
+       &nbsp | &nbsp 
+       <img width="8%" height="8%" align="top" alt="Image" src="https://github.com/user-attachments/assets/e4afcd94-c2d0-46f8-a143-6ec1d45530cf" />
+       <img width="8%" height="8%" align="top" alt="Image" src="https://github.com/user-attachments/assets/73aeee92-1344-430c-be53-8514a66fd92e" />
+       <img width="8%" height="8%" align="top" alt="Image" src="https://github.com/user-attachments/assets/d8922ed4-2f65-40f6-8b58-0e22f6f62b09" />
+       <img width="8%" height="8%" align="top" alt="Image" src="https://github.com/user-attachments/assets/5693afd9-6d33-467a-b9ab-52fb8ca8aef9" />
+       <img width="8%" height="8%" align="top" alt="Image" src="https://github.com/user-attachments/assets/1cdaa6f0-9884-4f1d-ad4b-4df0b7a3b668" />
+       <img width="8%" height="8%" align="top" alt="Image" src="https://github.com/user-attachments/assets/74098dfc-8d3b-47be-8cf0-98647bb35f1d" />
+       <img width="8%" height="8%" align="top" alt="Image" src="https://github.com/user-attachments/assets/1c652e36-2cf6-4894-a3c9-e2fd29ab8e87" />
+</p>
+
