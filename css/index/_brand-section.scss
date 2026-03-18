@@ -6,10 +6,10 @@
 
 .brands{
   width: 100%; height: auto;
-  background-size: cover;
+  margin-bottom: 160px;
+  padding-top: 56px;
   overflow: hidden;
   position: relative;
-  margin-bottom: 160px;
   .brands-inner{
     @include m.inner;
     display: flex;
@@ -20,10 +20,37 @@
       width: 957px; height: 980px;
       transform: translateX(8px);
       .prod-img{
-        max-width: inherit; height: inherit;
-        object-fit: cover;
+        width: inherit; height: inherit;
+        object-fit: contain;
       }
-
+      &::before{
+        content: '';
+        width: 1910px; height: 620px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: -5%; right: -145%;
+        z-index: -1;
+      }
+      &:nth-child(1)::before{
+        background-image: url(../image/coacola_background.svg);
+      }
+      &:nth-child(2)::before{
+        background-image: url(../image/sprite_background.svg);
+      }
+      &:nth-child(3)::before{
+        background-image: url(../image/fanta_background.svg);
+      }
+      &:nth-child(4)::before{
+        background-image: url(../image/docterpeper-background.svg);
+      }
+      &:nth-child(5)::before{
+        background-image: url(../image/powerade_background.svg);
+      }
+      &:nth-child(6)::before{
+        background-image: url(../image/toreta_background.svg);
+      }
+      
       &.active{
         display: inline-block;
         animation: fadeInleft 0.5s ease forwards
@@ -37,48 +64,6 @@
         position: relative;
         margin: 0 108px 108px 0;
         color: v.$c-text-white;
-        &::before{
-          content: '';
-          width: 1700px; height: 490px;
-          position: absolute;
-          top: 50%; transform: translateY(-50%);
-          z-index: -1;
-        }
-        &:nth-child(1)::before{
-          background: linear-gradient(90deg, rgba(102, 15, 15, 0.89) 0%, v.$c-brand-primary 10%) ;
-        }
-        &:nth-child(2)::before{
-          background: linear-gradient(90deg, rgba(19, 53, 16, 0.89) 0%, v.$c-sprite 10%) ;
-        }
-        &:nth-child(3)::before{
-          background: linear-gradient(90deg, rgba(104, 34, 24, 0.89) 0%, v.$c-fanta 20%) ;
-        }
-        &:nth-child(4)::before{
-          background: linear-gradient(90deg, rgba(0, 0, 0, 0.89) 0%, v.$c-docpeper 10%) ;
-        }
-        &:nth-child(5)::before{
-          background: linear-gradient(90deg, rgba(23, 29, 107, 0.89) 0%, v.$c-powerade 10%) ;
-        }
-        &:nth-child(6){color: v.$c-text-black;}
-        &:nth-child(6)::before{
-          background: linear-gradient(90deg, rgba(27, 141, 12, 0.89) 0%, #94EA03 10%) ;
-        }
-        &::after{
-          content: 'Brand';
-          position: absolute;
-          top: -30%; left: -45%;
-          font-family: v.$ff-en;
-          font-size: 164px;
-          font-weight: bold;
-          z-index: -2;
-          animation: textFadeSlide 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-        &:nth-child(1)::after{color: v.$c-brand-primary;}
-        &:nth-child(2)::after{color: v.$c-sprite;}
-        &:nth-child(3)::after{color: v.$c-fanta;}
-        &:nth-child(4)::after{color: v.$c-docpeper;}
-        &:nth-child(5)::after{color: v.$c-powerade;}
-        &:nth-child(6)::after{color: #94EA03;}
         h5{
           font-family: v.$ff-en;
           font-size: 24px;
@@ -119,6 +104,7 @@
           }
         }
         &:nth-child(6){
+          color: v.$c-text-black;
           .page-link{
             border: 1px solid v.$c-text-black;
             color: v.$c-text-black;
@@ -131,12 +117,6 @@
           animation: bgFadeSlide 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
          }
         }
-        &:nth-child(1).active::before{right: -160%;}
-        &:nth-child(2).active::before{right: -140%;}
-        &:nth-child(3).active::before{right: -160%;}
-        &:nth-child(4).active::before{right: -170%;}
-        &:nth-child(5).active::before{right: -130%;}
-        &:nth-child(6).active::before{right: -150%;}
       }
     }
    .tab-box{
@@ -195,22 +175,95 @@
     }
    } 
  }
+ // 반응형 1600px
+ @media(max-width:1600px){
+  padding-top: 32px;
+  .brands-inner{
+    .tab-img-wrap{
+      .prod-img{object-fit: cover;}
+      &::before{
+        top: -2%; right: -210%;
+        width: 1710px; height: 600px;
+      }
+     }
+   } 
+  }
+
+ // 반응형 1440px
+ @media(max-width:1440px){
+  padding-top: 24px;
+  .brands-inner{
+    .tab-img-wrap{
+      .prod-img{object-fit: cover;}
+      &::before{
+        top: 0%; right: -240%;
+        width: 1610px; height: 580px;
+      }
+     }
+   } 
+  }
+
+ // 반응형 1280px
+ @media(max-width:1280px){
+  padding-top: 12px;
+  .brands-inner{
+    .tab-img-wrap{
+      .prod-img{object-fit: cover;}
+      &::before{
+        top: 0%; right: -380%;
+        width: 1510px; height: 560px;
+      }
+     }
+   } 
+  }
+  
+  // 반응형 1160px
+  @media(max-width:1160px){
+    padding-top: 8px;
+    .brands-inner{
+      .tab-img-wrap{
+        .prod-img{object-fit: cover;}
+        &::before{
+          top: 0%; right: -500%;
+          width: 1510px; height: 560px;
+        }
+       }
+     } 
+    }
+
+ //반응형 1024
  @include r.tablet{
+  padding-top: 0px;
   .brands-inner{
     flex-direction: column;
-    gap: 84px;
+    gap: 48px;
     .tab-img-wrap{
       width: 1024px; height: 960px;
-      .prod-img{width: inherit; height: inherit; object-fit: contain;}
+      .prod-img{
+        width: inherit; height: inherit; object-fit: contain;
+      }
+      &::before{display: none;}
     }
     .brand-intro{
       .brand-text-box{
        text-align: center;
        margin: 0 auto 48px auto;
-       &::before{
-        width: 976px; height: 280px;
+       position: relative;
+       h5{font-size: 16px;}
+       .brand-name{font-size: 72px; line-height: 84px; margin: 2px 0;}
+       p{font-size: 16px; margin-bottom: 8px;}
+       .page-link{
+        font-size: 16px;
+        padding: 12px 16px;
+       }
+       &.active::before{
+        content: '';       
+        width: 1024px; height: 320px;
         border-radius: 24px;
-        top: 50%;
+        position: absolute;
+        top: 50%; left: -40%; 
+        z-index: -1;
+        background-color: gray;
        }
        &:nth-child(1)::before{background: v.$c-brand-primary;}
        &:nth-child(2)::before{background: v.$c-sprite;}
@@ -218,23 +271,6 @@
        &:nth-child(4)::before{background: v.$c-docpeper;}
        &:nth-child(5)::before{background: v.$c-powerade;}
        &:nth-child(6)::before{background: #94EA03;}
-
-       &:nth-child(1).active::before{left: -62%;}
-       &:nth-child(2).active::before{left: -62%;}
-       &:nth-child(3).active::before{left: -62%;}
-       &:nth-child(4).active::before{left: -62%;}
-       &:nth-child(5).active::before{left: -62%;}
-       &:nth-child(6).active::before{left: -62%;}
-
-       &::after{top: -18%; left: 25%; font-size: 72px;}
-
-       h5{font-size: 16px;}
-       .brand-name{font-size: 72px; line-height: 84px; margin: 2px 0;}
-       p{font-size: 16px; margin-bottom: 8px;}
-       .page-link{
-        font-size: 16px;
-        padding: 12px 16px;
-       } 
       }
     }
     .tab-box{
@@ -248,11 +284,12 @@
     }
   }
  }
+
  //반응형 768
  @include r.mobile-lg{
   .brands-inner{
     flex-direction: column;
-    gap: 84px;
+    gap: 48px;
     .tab-img-wrap{
       width: 720px; height: 820px;
       .prod-img{width: inherit; height: inherit; object-fit: contain;}
@@ -261,9 +298,15 @@
       .brand-text-box{
        text-align: center;
        margin: 0 auto 48px auto;
-       &::before{
-        width: 768px; height: 280px;
-        top: 50%;
+       position: relative;
+       &.active::before{
+        content: '';       
+        width: 768px; height: 300px;
+        border-radius: 24px;
+        position: absolute;
+        top: 50%; left: -5%; 
+        z-index: -1;
+        background-color: gray;
        }
        &:nth-child(1)::before{background: v.$c-brand-primary;}
        &:nth-child(2)::before{background: v.$c-sprite;}
@@ -271,15 +314,6 @@
        &:nth-child(4)::before{background: v.$c-docpeper;}
        &:nth-child(5)::before{background: v.$c-powerade;}
        &:nth-child(6)::before{background: #94EA03;}
-
-       &:nth-child(1).active::before{left: -35%;}
-       &:nth-child(2).active::before{left: -35%;}
-       &:nth-child(3).active::before{left: -35%;}
-       &:nth-child(4).active::before{left: -35%;}
-       &:nth-child(5).active::before{left: -35%;}
-       &:nth-child(6).active::before{left: -35%;}
-
-       &::after{top: -24%; left: 25%; font-size: 72px;}
 
        h5{font-size: 16px;}
        .brand-name{font-size: 64px; line-height: 72px; margin: 2px 0;}
@@ -306,7 +340,7 @@
  @include r.mobile-sm{
   .brands-inner{
     flex-direction: column;
-    gap: 48px;
+    gap: 32px;
     .tab-img-wrap{
       width: 392px; height: 560px;
       .prod-img{width: inherit; height: inherit; object-fit: contain;}
@@ -315,25 +349,22 @@
       .brand-text-box{
        text-align: center;
        margin: 0 auto 48px auto;
-       &::before{
+       position: relative;
+       &.active::before{
+        content: '';       
         width: 440px; height: 280px;
-        top: 50%;
+        border-radius: 24px;
+        position: absolute;
+        top: 50%; left: -5%; 
+        z-index: -1;
+        background-color: gray;
        }
-       &:nth-child(1)::before{background-color: v.$c-brand-primary;}
-       &:nth-child(2)::before{background-color: v.$c-sprite;}
-       &:nth-child(3)::before{background-color: v.$c-fanta;}
-       &:nth-child(4)::before{background-color: v.$c-docpeper;}
-       &:nth-child(5)::before{background-color: v.$c-powerade;}
-       &:nth-child(6)::before{background-color: #94EA03;}
-
-       &:nth-child(1).active::before{left: -10%;}
-       &:nth-child(2).active::before{left: -10%;}
-       &:nth-child(3).active::before{left: -10%;}
-       &:nth-child(4).active::before{left: -10%;}
-       &:nth-child(5).active::before{left: -10%;}
-       &:nth-child(6).active::before{left: -10%;}
-
-       &::after{top: -22%; left: 28%; font-size: 56px;}
+       &:nth-child(1)::before{background: v.$c-brand-primary;}
+       &:nth-child(2)::before{background: v.$c-sprite;}
+       &:nth-child(3)::before{background: v.$c-fanta;}
+       &:nth-child(4)::before{background: v.$c-docpeper;}
+       &:nth-child(5)::before{background: v.$c-powerade;}
+       &:nth-child(6)::before{background: #94EA03;}
 
        h5{font-size: 16px;}
        .brand-name{font-size: 48px; line-height: 72px; margin: 2px 0;}
