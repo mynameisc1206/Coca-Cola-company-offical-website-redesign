@@ -1,0 +1,90 @@
+@use '../base/variable' as v;
+
+/* 스크롤 공간 */
+.hero-wrapper {
+  height: 2200px;
+}
+
+/* sticky 기준 */
+.hero {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  /* 실제 크기 변화 대상 */
+  &-inner {
+    position: relative;
+    width: 40%;
+    height: 30vh;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    &.fullscreen {
+      width: 100%;
+      height: 100vh;
+      border-radius: 0;
+    }
+
+    &.dim {
+      .video-dim {
+        background: rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    video {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+  }
+
+  .video-dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.8s ease;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* 텍스트 */
+  &-text {
+    position: absolute;
+    bottom: 40%;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 1s ease;
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 46px;
+      font-weight: 400;
+      font-family: v.$ff-en;
+      color: #fff;
+      margin-bottom: 56px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #eee;
+    }
+  }
+}
+
+#brandDescText {
+  white-space: pre-line;
+}

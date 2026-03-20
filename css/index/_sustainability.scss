@@ -1,0 +1,135 @@
+@use "../base/variable" as v;
+@use "../base/mixin" as m;
+@use "../base/responsive" as r;
+
+$s-height: 620px;
+
+.sustainability {
+  margin-top: 160px;
+  display: flex;
+  height: auto;
+  overflow: hidden;
+  @include r.mobile-lg{
+    flex-direction: column;
+  }
+}
+
+/* 공통 영역 */
+.s-item {
+  height: 620px;
+  position: relative;
+  width: 50%;
+  overflow: hidden;
+  transition: .5s ease;
+
+  .bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* 회색 오버레이 */
+  .overlay.gray {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    z-index: 1;
+  }
+
+  /* 코너 오버레이 */
+  .overlay.corner {
+    position: absolute;
+    width: 110%;
+    height: 120%;
+    background: rgba(220, 0, 0, .85);
+    z-index: 2;
+    transform: scale(0) translate(0, 0);
+    transition: transform .6s;
+  }
+
+  &.left .overlay.corner {
+    left: -40%;
+    bottom: -40%;
+    transform-origin: left bottom;
+    border-top-right-radius: 28px;
+  }
+
+  &.right .overlay.corner {
+    right: -40%;
+    bottom: -40%;
+    transform-origin: right bottom;
+    border-top-left-radius: 28px;
+  }
+
+  &:hover {
+    width: 90%;
+  }
+
+  /* 중앙 콘텐츠 */
+  .content {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    color: #fff;
+    text-align: center;
+    pointer-events: none;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 40px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .btn {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: .35s ease;
+    padding: 10px 22px;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+  }
+  @include r.tablet{
+    .overlay.corner{
+      width: 110%;
+    }
+  }
+  @include r.mobile-lg{
+    width: 100%;
+    &:hover{
+      width: 100%;
+    }
+  }
+}
+
+/* ========== HOVER 동작 ========== */
+
+/* 회색 제거 */
+.s-item:hover .overlay.gray {
+  opacity: 0;
+}
+
+/* 코너 오버레이 올라옴 */
+.s-item:hover .overlay.corner {
+  transform: scale(1) translate(0,0)
+}
+
+/* 버튼 등장 */
+.s-item:hover .btn {
+  opacity: 1;
+  transform: translateY(0);
+}

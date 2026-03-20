@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>history</title>
+    <link rel="stylesheet" href="css/history/history.css" />
+    <!-- aos -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <!-- aos -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-wrap">
+        <div class="logo">
+          <a href="index.html"
+            ><img src="image/coacola-logo-white-large.svg" alt="coacola-logo"
+          /></a>
+        </div>
+        <nav>
+          <ul class="nav-menu">
+            <li class="select">
+              <a href="brandintroduction.html">Our Company</a>
+              <ul class="hover-text">
+                <a href="brandintroduction.html"><li>Brand Introduction</li></a>
+                <a href="history.html"><li>Brand History</li></a>
+              </ul>
+            </li>
+
+            <li><a href="brands.html">Brands</a></li>
+
+            <li><a href="brandnews.html">Brand Story</a></li>
+
+            <li class="select">
+              <a href="sustainabilty.html">Sustainability</a>
+              <ul class="hover-text">
+                <a href="sustainabilty_campagin.html"><li>원더플 캠페인</li></a>
+                <a href="sustainabilty_water.html"><li>물 환원 프로젝트</li></a>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="icons">
+          <div class="icons">
+            <a href="#none"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#none"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#none"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#none"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <button class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-menu">
+      <div class="mobile-menu-wrap">
+        <div class="mobile-menu-item">
+          <h4 class="menu-title-select">
+            <a href="#none">Our Company</a>
+          </h4>
+          <ul class="menu-select">
+            <a href="brandintroduction.html"><li>Brand Introduction</li></a>
+            <a href="history.html"><li>Brand History</li></a>
+          </ul>
+        </div>
+        <div class="mobile-menu-item">
+          <h4 class="menu-title">
+            <a href="brands.html">Brands</a>
+          </h4>
+        </div>
+        <div class="mobile-menu-item">
+          <h4 class="menu-title">
+            <a href="brandnews.html">Brand Story</a>
+          </h4>
+        </div>
+        <div class="mobile-menu-item">
+          <h4 class="menu-title-select">
+            <a href="#none">Sustainability</a>
+          </h4>
+          <ul class="menu-select">
+            <a href="sustainabilty_campagin.html"><li>원더플 캠페인</li></a>
+            <a href="sustainabilty_water.html"><li>물 환원 프로젝트</li></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 서브페이지 타이틀 -->
+    <section class="main-title">
+      <div class="header-title">
+        <div class="header-sub-title">
+          <img src="image/news-image/home-icon.png" alt="홈 아이콘" />
+          / Our conpany / Brand history
+        </div>
+        Brand history
+      </div>
+    </section>
+    <!-- 섹션1 -->
+    <section class="history" id="history">
+      <div class="history__inner">
+        <!-- 타임라인(회색/빨간선/점) -->
+        <div class="history__rail" aria-hidden="true">
+          <span class="history__rail-gray"></span>
+          <span class="history__rail-red"></span>
+          <span class="history__dot"></span>
+        </div>
+
+        <!-- JS가 여기 렌더 -->
+        <div class="history__list" id="historyList"></div>
+      </div>
+    </section>
+    <!-- 로케이션 -->
+    <section class="location-btns">
+      <a href="brandintroduction.html" class="location-btn">
+        <div class="location-img-box">
+          <img src="image/brands/ourcompany.png" alt="서브페이지 이동 이미지" />
+        </div>
+        <div class="location-text location-text-left">
+          <img
+            src="image/location-arrow-left.png"
+            alt="서브페이지 이동 방향 화살표"
+          />
+          <p class="location-title">our&nbsp;company</p>
+        </div>
+      </a>
+      <a href="brands.html" class="location-btn">
+        <div class="location-img-box">
+          <img
+            src="image/news-image/location-img-brands.png"
+            alt="서브페이지 이동 이미지"
+          />
+        </div>
+        <div class="location-text location-text-right">
+          <p class="location-title">brands</p>
+          <img
+            src="image/location-arrow-right.png"
+            alt="서브페이지 이동 방향 화살표"
+          />
+        </div>
+      </a>
+    </section>
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="footer-wrap">
+        <div class="active-section">
+          <div class="footer-link-box">
+            <div class="footer-head">
+              <div class="footer-logo">
+                <a href="index.html"
+                  ><img
+                    src="image/coacola-logo-white-large.svg"
+                    alt="coacola-logo"
+                /></a>
+              </div>
+              <div class="nation">
+                <span>한국</span>
+                <img
+                  src="image/location_on_24dp_FFF_.svg"
+                  alt="location_icon"
+                />
+              </div>
+            </div>
+            <div class="footer-icons">
+              <a href="#none"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#none"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#none"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#none"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+          </div>
+          <div class="footer-menu">
+            <div class="footer-service">
+              <h4>소개</h4>
+              <p><a href="brandintroduction.html">기업소개</a></p>
+              <p><a href="history.html">기업 히스토리</a></p>
+              <p><a href="#none">채용</a></p>
+            </div>
+            <div class="footer-service">
+              <h4>도움이 필요하세요?</h4>
+              <p><a href="#none">사이트 맵</a></p>
+              <p><a href="#none">고객 안내</a></p>
+            </div>
+            <div class="footer-service">
+              <h4>법적고지</h4>
+              <p><a href="#none">이용약관</a></p>
+              <p><a href="#none">쿠키정책</a></p>
+              <p><a href="#none">쿠키설정</a></p>
+            </div>
+          </div>
+        </div>
+        <p class="website-right">©2026 The Coca-Cola Company 판권소유</p>
+      </div>
+    </footer>
+    <script src="js/historyData.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

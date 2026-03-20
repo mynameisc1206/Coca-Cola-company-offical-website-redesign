@@ -1,0 +1,399 @@
+@use '../base/mixin' as m;
+@use '../base/responsive' as r;
+@use '../base/variable' as v;
+
+
+:root {
+  --red: #e31d2e;
+  --ink: #111;
+  --muted: #666;
+  --line: 2px;
+
+  --topDur: 600ms;
+  --dotPopDur: 120ms;
+  --bottomMoveDur: 600ms;
+
+  --bottomStart: 0;
+  --bottomTarget: 0;
+  --bottomGap: 100px;
+  --bottomMax: 99999px;
+  --bottom-line-width: 0px;
+}
+
+@mixin abs-center-y {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.history-cta {
+  overflow-x: hidden;
+
+  @include r.tablet {
+    width: 100%;
+  }
+
+  @include r.mobile-lg {
+    width: 100%;
+    --bottomGap: 20px;
+    --bottomMax: 99999px;
+  }
+
+  @include r.mobile-sm {
+    --bottomGap: 16px;
+    --bottomMax: 99999px;
+  }
+
+  .row {
+    @include m.inner;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    justify-content: space-around;
+
+    @include r.mobile-lg {
+      flex-direction: row;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    @include r.mobile-sm {
+      gap: 12px;
+    }
+
+    &--top {
+      padding-bottom: 56px;
+      text-align: right;
+
+      @include r.mobile-lg {
+        padding-bottom: 40px;
+        text-align: right;
+      }
+
+      @include r.mobile-sm {
+        padding-bottom: 30px;
+      }
+    }
+
+    &--bottom {
+      padding-top: 10px;
+
+      @include r.mobile-lg {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .kicker {
+    font-size: 32px;
+    margin: 0 0 10px;
+    color: v.$c-brand-primary;
+    font-weight: v.$fw-title-sm;
+    font-family: v.$ff-en;
+
+    @include r.mobile-lg {
+      font-size: 16px;
+      margin: 0 0 8px;
+    }
+  }
+
+  .title {
+    margin: 0;
+    font-size: 96px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: v.$c-text-black;
+    font-weight: v.$fw-title-sm;
+    font-family: v.$ff-kr;
+
+    @include r.mobile-lg {
+      font-size: 40px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    @include r.mobile-sm {
+      font-size: 40px;
+      white-space: nowrap;
+    }
+  }
+
+  .headline {
+    margin: 0 0 10px;
+    font-size: 56px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: v.$c-text-black;
+    font-weight: v.$fw-title-sm;
+    font-family: v.$ff-kr;
+
+    @include r.mobile-lg {
+      font-size: 40px;
+      line-height: 1.3;
+      margin: 0 0 12px;
+    }
+
+    @include r.mobile-sm {
+      font-size: 32px;
+      line-height: 1.25;
+      margin: 0 0 10px;
+      white-space: nowrap;
+    }
+  }
+
+  .desc {
+    margin: 0 0 18px;
+    max-width: 440px;
+    color: v.$c-text-black;
+    font-size: 20px;
+    line-height: 1.6;
+    font-family: v.$ff-kr;
+    font-weight: v.$fw-re;
+
+    @include r.mobile-lg {
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 20px;
+      max-width: 280px;
+    }
+
+    @include r.mobile-sm {
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 0 0 16px;
+      max-width: 209px;
+    }
+  }
+
+  .btn {
+    @include m.slide-bg-btn;
+    font-family: v.$ff-kr;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 260px;
+    margin-top: 35px;
+
+    @include r.mobile-lg {
+      font-size: 16px;
+      margin-left: 160px;
+    }
+
+    @include r.mobile-sm {
+      font-size: 14px;
+      margin-left: 95px;
+    }
+  }
+
+  .top-text {
+    @include r.mobile-lg {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  .top-line {
+    position: relative;
+    flex: 1;
+    height: 24px;
+    min-width: 120px;
+
+    @include r.mobile-lg {
+      flex: 1;
+      width: auto;
+      min-width: 60px;
+      left: 15px;
+    }
+
+    &__bar {
+      @include abs-center-y;
+      left: 0;
+      height: var(--line);
+      background: var(--red);
+      width: calc(100% + (50vw - 50%)); // ← 데스크탑은 원래대로
+      transform: translateY(-50%) scaleX(0);
+      transform-origin: left center;
+
+      @include r.mobile-lg {
+        width: 100%; // ← 모바일만 제한
+      }
+    }
+  }
+
+  .bottom-line {
+    position: relative;
+    flex: 0 0 auto;
+    width: 0;
+    height: 24px;
+    top: -40px;
+
+    @include r.mobile-lg {
+      flex: 1;
+      width: auto;
+      position: relative;
+      left: -25px !important;
+    }
+
+    &__dot {
+      @include abs-center-y;
+      left: var(--bottomStart);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--red);
+      transform: translateY(-50%) scale(0);
+      opacity: 0;
+      z-index: 2;
+
+      @include r.mobile-lg {
+        left: 0 !important;
+        // right: 0;
+        transform: translateY(-50%) scale(0);
+      }
+
+      @include r.mobile-sm {
+        width: 20px;
+        height: 20px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: v.$c-text-white;
+
+        @include r.mobile-sm {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+
+    &__bar {
+      @include abs-center-y;
+      left: var(--bottomStart);
+      height: var(--line);
+      background: var(--red);
+      width: 0px;
+      transform: translateY(-50%);
+      z-index: 1;
+
+      @include r.mobile-lg {
+        left: 0;
+        width: 0;
+        // animation: none !important;
+      }
+    }
+  }
+
+  .bottom-text {
+    @include r.mobile-lg {
+      flex: 2;
+      padding-left: 20px;
+      min-width: 0;
+    }
+
+    @include r.mobile-sm {
+      padding-left: 16px;
+      padding-right: 25px;
+    }
+  }
+
+  &.is-anim {
+    .top-line__bar {
+      animation: topDraw var(--topDur) ease-out forwards;
+    }
+
+    .bottom-line__dot {
+      animation: dotPop var(--dotPopDur) ease-out forwards,
+        dotMove var(--bottomMoveDur) ease-out forwards;
+      animation-delay: var(--topDur), calc(var(--topDur) + var(--dotPopDur));
+
+      @include r.mobile-lg {
+        animation: dotPop var(--dotPopDur) ease-out forwards,
+        dotMoveMobile var(--topDur) ease-out forwards;  // ← bottomMoveDur 대신 topDur
+        animation-delay: var(--topDur), var(--topDur);  // ← 선과 동시에 시작
+      }
+      @include r.mobile-sm {
+      animation: dotPop var(--dotPopDur) ease-out forwards,
+        dotMoveMobile440 var(--topDur) ease-out forwards;  // ← 440px 전용만 추가
+      animation-delay: var(--topDur), var(--topDur);
+    }
+    }
+
+    .bottom-line__bar {
+      animation: trailGrow var(--bottomMoveDur) ease-out forwards;
+      animation-delay: calc(var(--topDur) + var(--dotPopDur));
+
+      @include r.mobile-lg {
+        animation: bottomLineDraw var(--topDur) ease-out forwards; // ← 유지
+        animation-delay: var(--topDur); // ← 유지
+      }
+    }
+  }
+}
+
+@keyframes topDraw {
+  to {
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+@keyframes dotPop {
+  to {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes dotMoveMobile {
+  0% {
+    transform: translateY(-50%) scale(1) translateX(0);
+  }
+  100% {
+    transform: translateY(-50%) scale(1) translateX(calc(var(--bottom-line-width) - 24px));
+  }
+}
+
+@keyframes dotMoveMobile440 {
+  0% {
+    transform: translateY(-50%) scale(1) translateX(0);
+  }
+  100% {
+    transform: translateY(-50%) scale(1) translateX(calc(var(--bottom-line-width) - 10px));  // 20px / 2
+  }
+}
+
+@keyframes dotMove {
+  from {
+    transform: translateY(-50%) scale(1) translateX(0);
+  }
+
+  to {
+    transform: translateY(-50%) scale(1) translateX(var(--bottomTarget));
+  }
+}
+
+@keyframes trailGrow {
+  from {
+    width: 0px;
+  }
+
+  to {
+    width: var(--bottomTarget);
+  }
+}
+
+@keyframes bottomLineDraw {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}

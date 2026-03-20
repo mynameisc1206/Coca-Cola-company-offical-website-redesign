@@ -1,0 +1,148 @@
+@use '../base/variable' as v;
+@use '../base/responsive' as r;
+@use '../base/mixin' as m;
+
+$product-card-width : 260px;
+$btn-size: 40px;
+$btn-gap: 16px;               // 카드와 버튼 사이 간격
+
+$product-center-offset:
+  ($product-card-width / 2) +
+  ($btn-size / 2) +
+  $btn-gap;
+
+.product-section {
+  position: relative;
+  margin: 80px 0;
+  padding: 160px 0;
+  overflow: hidden;
+  .product-bg {
+    position: absolute;
+    inset: 0;
+    height: 55%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+
+  .inner {
+    position: relative;
+    z-index: 1;
+    &::before{
+      content: '제품 목록';
+      position: absolute;
+      top: -20%;
+      left: 0;
+      color: v.$c-text-white;
+      font-size: v.$section-title;
+      font-weight: v.$fw-title-sm;
+      -webkit-text-stroke: 2px black;
+      @include r.mobile-lg{
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+/* swiper */
+.productSwiper {
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+
+  @include r.tablet {
+    width: 95%;
+  }
+
+  @include r.mobile-lg {
+    width: 100%;
+  }
+
+  .swiper-wrapper{
+    align-items: center;
+  }
+
+  /* 네비게이션 버튼 */
+  .swiper-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $btn-size;
+    height: $btn-size;
+    padding: 0;
+    border-radius: 50%;
+    z-index: 9;
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &.prev {
+      left: calc(49% - #{$product-center-offset});
+      background-image: url("../image/brands/swiper-left.png");
+    }
+
+    &.next {
+      right: calc(49% - #{$product-center-offset});
+      background-image: url("../image/brands/swiper-right.png");
+    }
+    @include r.mobile-lg{
+      display: none;
+    }
+  }
+  
+  /* 슬라이드 카드 */
+  .swiper-slide {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.8);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    .card{
+      width: 100%;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      opacity: 0.85;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .title {
+      margin-top: 16px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #111;
+      text-align: center;
+    }
+    @include r.tablet {
+      width: 240px;
+      .card{height: auto;padding: 30px 0;}
+    }
+
+    @include r.mobile-lg {
+      width: auto;
+      .card{height: auto;padding: 20px 0;}
+    }
+  }
+  .swiper-slide-active {
+    pointer-events: auto;
+    cursor: pointer;
+    transform: scale(1);
+    z-index: 2;
+    .card{
+      opacity: 1;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+  }
+}

@@ -1,0 +1,113 @@
+@use 'responsive' as r;
+@use 'variable' as v;
+
+@mixin inner{
+	max-width: 1610px;
+	margin: 0 155px;
+	@include r.tablet{
+		max-width: 920px;
+		margin: 0 52px;
+	}
+	@include r.mobile-lg {
+		max-width: 720px;
+		margin: 0 24px;
+	}
+	@include r.mobile-sm {
+		max-width: 392px;
+		margin: 0 24px;
+	}
+}
+// 구현 화면(contianer) 사이즈
+
+@mixin flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// 중앙정렬
+
+
+@mixin slide-bg-btn{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px 36px;
+	border: 2px solid v.$c-brand-primary;
+	border-radius: 60px;
+	background: linear-gradient(to right,v.$c-brand-primary 50%,transparent 50%);
+	background-size: 200% 100%;
+	background-position: right bottom;
+	color: v.$c-brand-primary;
+	font-size: 18px;
+	font-weight: 500;
+	font-family: v.$ff-kr;
+	cursor: pointer;
+	transition:
+		background-position 0.35s ease,
+		color 0.25s ease,
+		border-color 0.25s ease;
+	&:hover {
+		background-position: left bottom;
+		color: v.$c-text-white
+	}
+	@include r.mobile-lg {
+		padding: 16px 28px;
+		font-size: 18px;
+	}
+
+	@include r.mobile-sm {
+		padding: 12px 18px;
+		font-size: 16px;
+	}
+	@content;
+}
+// 버튼
+
+@mixin subpage-title{
+  font-size: 64px;
+  font-weight: 800;
+  margin: 160px 0;
+	text-align: center;
+  @include r.mobile-lg {
+    font-size: 64px;
+    font-weight: 800;
+    margin: 120px 0;
+		text-align: center;
+  }
+  @include r.mobile-sm {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 120px 0;
+		text-align: center;
+  }
+	@content;
+}
+//서브페이지-타이틀 
+
+@mixin location-btn-forward {
+  display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 50%; height: 180px;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding-right: 112px;
+	color: #fff;
+	font-size: 48px;
+	font-weight: 500;
+  font-family: v.$ff-en;
+	@content;
+}
+@mixin location-btn-backward {
+  display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 50%; height: 180px;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding-left: 112px;
+	color: #fff;
+	font-size: 48px;
+	font-weight: 500;
+  font-family: v.$ff-en;
+	@content;
+}
+//서브페이지-로케이션

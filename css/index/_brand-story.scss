@@ -1,0 +1,296 @@
+@use '../base/mixin' as m;
+@use '../base/responsive' as r;
+@use '../base/variable' as v;
+
+.brand-story {
+  margin-bottom: 160px;
+  height: 100vh;
+
+  // overflow: hidden;
+  @include r.tablet {
+    height: auto !important;
+    min-height: 100vh;
+    // overflow: visible;
+    padding-bottom: 60px;
+  }
+
+  @include r.mobile-lg {
+    width: 100%;
+    margin-bottom: 60px;
+    height: auto;
+  }
+
+  @include r.mobile-sm {
+    margin-bottom: 60px;
+  }
+
+  .brand-story-inner {
+    @include m.inner;
+    display: flex;
+    justify-content: space-between;
+    gap: 45px;
+    height: 100%;
+
+    @include r.tablet {
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      // min-height: 100vh;
+    }
+
+    @include r.mobile-lg {}
+
+    .brand-story-title {
+      flex: 2;
+      justify-items: right;
+      width: 50%;
+      margin-top: 120px;
+
+      @include r.tablet {
+        width: 100%;
+        justify-items: center;
+        flex: none;
+        margin-top: 60px;
+      }
+
+      @include r.mobile-lg {
+        flex: none;
+      }
+
+      .brand-story-main-title {
+        font-family: v.$ff-en;
+        font-weight: 800;
+        font-size: 172px;
+        line-height: 0.8;
+        color: v.$c-brand-primary;
+        margin-bottom: 30px;
+
+        @include r.mobile-lg {
+          font-size: 128px;
+        }
+
+        @include r.mobile-sm {
+          font-size: 96px;
+          line-height: 1;
+        }
+
+        .brand-story-main-title-top {
+          @include r.mobile-sm {}
+        }
+
+        .brand-story-main-title-hyphen {
+          font-size: 128px;
+          font-weight: 700;
+          padding-left: 150px;
+
+          @include r.mobile-lg {
+            font-size: 96px;
+          }
+
+          @include r.mobile-sm {
+            padding-left: 0;
+          }
+        }
+
+        .brand-story-main-title-bottom {
+          font-family: v.$ff-en;
+          font-weight: 800;
+          font-size: 172px;
+          color: v.$c-brand-primary;
+
+          @include r.mobile-lg {
+            font-size: 128px;
+          }
+
+          @include r.mobile-sm {
+            font-size: 96px;
+          }
+        }
+      }
+
+      .brand-story-sub-title {
+        font-family: v.$ff-en;
+        font-size: 96px;
+        font-weight: 600;
+        padding-right: 50px;
+        margin-bottom: 100px;
+
+        @include r.mobile-lg {
+          font-size: 64px;
+          padding-right: 0;
+          margin-bottom: 25px;
+        }
+
+        @include r.mobile-sm {
+          font-size: 48px;
+          padding-right: 0;
+          margin-bottom: 25px;
+        }
+      }
+
+      .morbtn {
+        @include m.slide-bg-btn;
+        display: flex;
+        font-size: 20px;
+
+        @include r.mobile-sm {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .brand-story-content {
+      flex: 3;
+      width: 50%;
+      display: flex;
+      height: 100%;
+
+      @include r.tablet {
+        width: 100%;
+        flex: none;
+        height: 80vh;
+      }
+
+      @include r.mobile-lg {
+        width: 100%;
+        flex: none;
+        height: 600px;
+      }
+
+      .go-to-brand-story {
+        display: block;
+        width: 100%;
+        position: relative;
+
+        &::before {
+          content: '브랜드 소식 더 보기';
+          text-align: center;
+          line-height: 25;
+          font-size: 36px;
+          color: #fff;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          z-index: 10;
+          opacity: 0;
+          font-family: v.$ff-kr;
+          font-weight: 500;
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+      .swiper-area {
+        display: flex;
+        gap: 24px;
+        height: 100%;
+
+        @include r.mobile-sm {
+          gap: 12px;
+        }
+
+        .col-wrap {
+          // height: 100%;
+          overflow: hidden;
+          position: relative;
+          flex: 1;
+          min-width: 0;
+          -webkit-mask-image: linear-gradient(to bottom,
+              transparent 0%,
+              #000 12%,
+              #000 88%,
+              transparent 100%);
+          mask-image: linear-gradient(to bottom,
+              transparent 0%,
+              #000 12%,
+              #000 88%,
+              transparent 100%);
+
+          .swiper {
+            height: 100%;
+
+            .swiper-wrapper {
+              // transition: transform 0.3s linear;
+              display: flex;
+              flex-direction: column;
+              gap: 24px;
+              transition-timing-function: linear !important;
+              animation-timing-function: infinite;
+
+              @include r.mobile-sm {
+                gap: 12px;
+              }
+
+              .swiper-slide {
+                height: auto !important;
+                // transition: transform 0.3s;
+                flex-shrink: 0;
+
+                .news-card {
+                  width: 100%;
+                  height: 557px;
+                  position: relative;
+                  border-radius: 12px;
+                  overflow: hidden;
+
+                  @include r.mobile-sm {
+                    height: 220px;
+                  }
+
+                  img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                  }
+
+                  .news-card__overlay {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    padding: 20px 20px;
+                    color: #fff;
+                    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+
+                    @include r.mobile-sm {
+                      padding: 12px;
+                    }
+
+                    .news-card__sub-title {
+                      font-size: 18px;
+                      font-weight: 300;
+                      font-family: v.$ff-kr;
+
+                      @include r.mobile-lg {
+                        font-size: 16px;
+                      }
+                    }
+
+                    .news-card__title {
+                      margin: 0;
+                      font-size: 22px;
+                      font-weight: 500;
+                      line-height: 33px;
+                      margin-top: 8px;
+                      font-family: v.$ff-kr;
+
+                      @include r.mobile-lg {
+                        font-size: 18px;
+                        line-height: 1.3;
+                      }
+                    }
+                  }
+
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

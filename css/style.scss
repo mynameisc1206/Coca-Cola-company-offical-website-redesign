@@ -1,0 +1,84 @@
+
+@use 'base/library';
+@use 'base/reset';
+@use 'base/mixin' as m;
+@use 'base/variable' as v;
+@use 'base/responsive' as r;
+@use 'header_footer/header';
+@use 'header_footer/footer';
+@use 'index/video-section';
+@use 'index/sustainability';
+@use 'index/brand-story';
+@use 'index/history-cta';
+@use 'index/brand-section';
+
+body{
+  overflow-x: hidden;
+}
+.header {
+  // background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 80%);
+  border-bottom: none;
+  // position: absolute;
+  nav {
+    .nav-menu {
+      color: v.$c-text-white;
+
+      li {
+        .hover-text {
+          li {
+            background-color: v.$c-text-white !important;
+            color: v.$c-text-black !important;
+            cursor: pointer;
+
+            &:hover {
+              background-color: rgba(v.$c-brand-primary, 0.8) !important;
+              color: v.$c-text-white !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  &:hover {
+    background: rgba(v.$c-text-white, 0.8);
+  }
+
+  &:hover .logo a img {
+    filter: invert(100%);
+  }
+
+  &:hover nav .nav-menu {
+    color: v.$c-text-black;
+  }
+
+  &:hover .icons {
+    color: v.$c-text-black;
+  }
+
+  &:hover .icons a {
+    border: 1px solid v.$c-text-black;
+    color: v.$c-text-black;
+  }
+
+  @include r.mobile-lg {
+    padding: 16px 0;
+    .header-wrap {
+      .menu-toggle {
+        span {
+          // background-color: v.$c-text-white;
+        }
+      }
+
+      &:hover .menu-toggle span {
+        background-color: v.$c-text-black;
+      }
+    }
+  }
+}
+
+main{
+  margin-bottom: 160px;
+  // video{height: 100vh;}
+}
