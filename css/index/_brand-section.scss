@@ -15,27 +15,27 @@
     background-size: 90%;
   
     &#tab1{
-      background-image: url(../image/Cocacola-image.png);
+      background-image: url(../../image/Cocacola-image.png);
       background-position: right 0% top 2%;
     }
     &#tab2{
-      background-image: url(../image/Sprite-image.png);
+      background-image: url(../../image/Sprite-image.png);
       background-position: right 0% top 16%;
     }
     &#tab3{
-      background-image: url(../image/Fanta-image.png);
+      background-image: url(../../image/Fanta-image.png);
       background-position: right 0% top 10%;
     }
     &#tab4{
-      background-image: url(../image/Docterpeper-image.png);
+      background-image: url(../../image/Docterpeper-image.png);
       background-position: right 0% top 40%;
     }
     &#tab5{
-      background-image: url(../image/Powerade-image.png);
+      background-image: url(../../image/Powerade-image.png);
       background-position: right 0% top 10%;
     }
     &#tab6{
-      background-image: url(../image/Toreta-image.png);
+      background-image: url(../../image/Toreta-image.png);
       background-position: right 0% top 30%;
       .brand-text-box{
         color: v.$c-text-black;
@@ -117,22 +117,22 @@
         position: relative;
         transition: 0.3s;
         &:nth-child(1){
-          background-image: url(../image/coacola-logo-red-small.svg);
+          background-image: url(../../image/coacola-logo-red-small.svg);
         }
         &:nth-child(2){
-          background-image: url(../image/Sprite_Logo.svg);
+          background-image: url(../../image/Sprite_Logo.svg);
         }
         &:nth-child(3){
-          background-image: url(../image/Fanta_logo.svg);
+          background-image: url(../../image/Fanta_logo.svg);
         }
         &:nth-child(4){
-          background-image: url(../image/dr-pepper-seeklogo.svg);
+          background-image: url(../../image/dr-pepper-seeklogo.svg);
         }
         &:nth-child(5){
-          background-image: url(../image/Powerade_logo.svg);
+          background-image: url(../../image/Powerade_logo.svg);
         }
         &:nth-child(6){
-          background-image: url(../image/Toreta.png);
+          background-image: url(../../image/Toreta.png);
         }
         &::before{
           content: '';
@@ -208,27 +208,27 @@
     width: 100%; height: inherit;
     background-size: 70%;
     &#tab1{
-      background-image: url(../image/coca-cola-tab-img.svg);
+      background-image: url(../../image/coca-cola-tab-img.svg);
       background-position: right 50% top 2%;  
     }
     &#tab2{
-      background-image: url(../image/sprite-tab-image.svg);
+      background-image: url(../../image/sprite-tab-image.svg);
       background-position: right 50% top 2%;  
     }
     &#tab3{
-      background-image: url(../image/fanta-tab-image.svg);
+      background-image: url(../../image/fanta-tab-image.svg);
       background-position: right 50% top 2%;  
     }
     &#tab4{
-      background-image: url(../image/doctor-peper-tab-image.svg);
+      background-image: url(../../image/doctor-peper-tab-image.svg);
       background-position: right 50% top 10%;  
     }
     &#tab5{
-      background-image: url(../image/powerade-tab-image.svg);
+      background-image: url(../../image/powerade-tab-image.svg);
       background-position: right 50% top 2%;  
     }
     &#tab6{
-      background-image: url(../image/toreta-tab-image.svg);
+      background-image: url(../../image/toreta-tab-image.svg);
       background-position: right 50% top 0%;  
     }
     .brand-inner{
