@@ -10,6 +10,7 @@
   position: relative;
   .tab-img-wrap{
     display: none;
+	position: relative;  
     width: 100%; height: 100%;
     background-repeat: no-repeat;
     background-size: 90%;
@@ -53,7 +54,6 @@
     .brand-inner{
       @include m.inner;
       width: 100%; height: inherit;
-      position: relative;
        .brand-text-box{
           position: absolute;
           top: 25%; right: 5%;
