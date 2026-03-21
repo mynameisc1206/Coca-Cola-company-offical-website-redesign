@@ -6,7 +6,7 @@
 
 ### 프로젝트 링크
 - **기획서 (Figma)**: [바로가기](https://www.figma.com/deck/Wb4sei9XzctPdpoa2EOhJ2/%ED%95%9C%EA%B5%AD-%EC%BD%94%EC%B9%B4-%EC%BD%9C%EB%9D%BC-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A6%AC%EB%89%B4%EC%96%BC-%EA%B8%B0%ED%9A%8D%EC%84%9C)
-- **디자인 가이드 (Figma)**: [바로가기]([https://www.figma.com/proto/Z8KIZzOfrZoNq3ryVGJ5Tn/%EC%BD%94%EC%B9%B4%EC%BD%9C%EB%9D%BC-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A6%AC%EB%89%B4%EC%96%BC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8](https://www.figma.com/proto/Z8KIZzOfrZoNq3ryVGJ5Tn/%EC%BD%94%EC%B9%B4%EC%BD%9C%EB%9D%BC-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A6%AC%EB%89%B4%EC%96%BC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?page-id=0%3A1&node-id=1239-7909&viewport=585%2C-1185%2C0.03&t=xao24rRTXOqU21sY-1&scaling=min-zoom&content-scaling=fixed))
+- **디자인 가이드 (Figma)**: [바로가기](https://www.figma.com/proto/Z8KIZzOfrZoNq3ryVGJ5Tn/%EC%BD%94%EC%B9%B4%EC%BD%9C%EB%9D%BC-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A6%AC%EB%89%B4%EC%96%BC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?page-id=0%3A1&node-id=1239-7909&viewport=585%2C-1185%2C0.03&t=xao24rRTXOqU21sY-1&scaling=min-zoom&content-scaling=fixed)
 - **결과물 (GitHub Pages)**: [바로가기](https://mynameisc1206.github.io/Coca-Cola-company-offical-website-redesign/)
 
 
